@@ -1,0 +1,193 @@
+local VLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/vep1032/VepStuff/main/VL"))()
+
+local s = VLib:Window("Yo", "Pet Posse", "GG")
+
+local ss = s:Tab("Main")
+
+ss:Button("reset (q)",function()
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+local char = player.Character
+local h = char:WaitForChild("Humanoid")
+mouse.KeyUp:connect(function(key)
+ if key == "q" then
+  h.Health = 0
+ end
+end)
+end)
+ss:Button("inf jump",function()
+    local InfiniteJumpEnabled = true
+game:GetService("UserInputService").JumpRequest:connect(function()
+	if InfiniteJumpEnabled then
+		game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+	end
+end)
+
+end)
+
+ss:Button("rtx on",function()
+        getgenv().mode = "Autumn" -- Choose from Summer and Autumn
+            settings().Rendering.QualityLevel = 10
+            local a = game.Lighting
+            a.Ambient = Color3.fromRGB(33, 33, 33)
+            a.Brightness = 6.67
+            a.ColorShift_Bottom = Color3.fromRGB(0, 0, 0)
+            a.ColorShift_Top = Color3.fromRGB(255, 247, 237)
+            a.EnvironmentDiffuseScale = 0.105
+            a.EnvironmentSpecularScale = 0.522
+            a.GlobalShadows = true
+            a.OutdoorAmbient = Color3.fromRGB(51, 54, 67)
+            a.ShadowSoftness = 0.04
+            a.GeographicLatitude = -15.525
+            a.ExposureCompensation = 0.75
+            local b = Instance.new("BloomEffect", a)
+            b.Enabled = true
+            b.Intensity = 0.04
+            b.Size = 1900
+            b.Threshold = 0.915
+            local c = Instance.new("ColorCorrectionEffect", a)
+            c.Brightness = 0.176
+            c.Contrast = 0.39
+            c.Enabled = true
+            c.Saturation = 0.2
+            c.TintColor = Color3.fromRGB(217, 145, 57)
+            if getgenv().mode == "Summer" then
+                c.TintColor = Color3.fromRGB(255, 220, 148)
+            elseif getgenv().mode == "Autumn" then
+                c.TintColor = Color3.fromRGB(217, 145, 57)
+            else
+                warn("No mode selected!")
+                print("Please select a mode")
+                b:Destroy()
+                c:Destroy()
+            end
+            local d = Instance.new("DepthOfFieldEffect", a)
+            d.Enabled = true
+            d.FarIntensity = 0.077
+            d.FocusDistance = 21.54
+            d.InFocusRadius = 20.77
+            d.NearIntensity = 0.277
+            local e = Instance.new("ColorCorrectionEffect", a)
+            e.Brightness = 0
+            e.Contrast = -0.07
+            e.Saturation = 0
+            e.Enabled = true
+            e.TintColor = Color3.fromRGB(255, 247, 239)
+            local e2 = Instance.new("ColorCorrectionEffect", a)
+            e2.Brightness = 0.2
+            e2.Contrast = 0.45
+            e2.Saturation = -0.1
+            e2.Enabled = true
+            e2.TintColor = Color3.fromRGB(255, 255, 255)
+            local s = Instance.new("SunRaysEffect", a)
+            s.Enabled = true
+            s.Intensity = 0.01
+            s.Spread = 0.146
+end)
+
+ss:Button("Infinite Yield",function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+end)
+
+
+ss:Slider("WalkSpeed",16,1000,70,function(t)
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (t)
+end)
+
+
+ss:Colorpicker("Colorpicker",Color3.fromRGB(255, 1, 1),function(t)
+print(t)
+end)
+ss:Label("credit Teaspoon#0089")
+local ss = s:Tab("farm")
+ss:Label("close script = reset")
+ss:Button("Fast farm (Starting location)",function()
+local plr = game.Players.LocalPlayer
+local things = workspace.__THINGS
+local remote = things.__REMOTES.clickedButton
+
+while task.wait() do -- no delay so it can go hella fucking fast + the script iterating over instances makes it go slow enough
+   local pets = {}; for i,v in pairs(things.Pets:FindFirstChild(plr.Name):GetChildren()) do
+       table.insert(pets, v.Name)
+   end
+
+   local coins = {}; for i,v in pairs(things.Coins.SpawnWorld:GetChildren()) do
+       for z,x in pairs(v:GetDescendants()) do
+           if table.find(pets, x.Name) then
+               table.insert(coins, v)
+           end
+       end
+   end
+
+   for i,v in pairs(coins) do
+       remote:FireServer(v.Coin, v)
+   end
+end
+end)
+ss:Button("Fast farm (Sea location)",function()
+local plr = game.Players.LocalPlayer
+local things = workspace.__THINGS
+local remote = things.__REMOTES.clickedButton
+
+while task.wait() do -- no delay so it can go hella fucking fast + the script iterating over instances makes it go slow enough
+   local pets = {}; for i,v in pairs(things.Pets:FindFirstChild(plr.Name):GetChildren()) do
+       table.insert(pets, v.Name)
+   end
+
+   local coins = {}; for i,v in pairs(things.Coins.SeaWorld:GetChildren()) do
+       for z,x in pairs(v:GetDescendants()) do
+           if table.find(pets, x.Name) then
+               table.insert(coins, v)
+           end
+       end
+   end
+
+   for i,v in pairs(coins) do
+       remote:FireServer(v.Coin, v)
+   end
+end
+end)
+ss:Button("AutoRebirth",function()
+    local plr = game.Players.LocalPlayer
+local remote = workspace.__THINGS.__REMOTES.rebirth
+while task.wait(0.5) do --  high delay to prevent any possible lag from script
+   remote:InvokeServer(plr)
+end
+end)
+local ss = s:Tab("teleport")
+ss:Button("shop",function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(439.999939, 9.99999714, 10.0000114, -2.74245931e-13, 4.1833875e-08, 1, 4.16248902e-08, 1, -4.1833875e-08, -1, 4.16248902e-08, -2.75987241e-13)
+end)
+ss:Button("starter Camp Zone",function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(348.999969, 5.99999809, 10.0000114, -1.23148562e-13, -2.52896619e-08, 1, -1.80975164e-08, 1, 2.52896619e-08, -1, -1.80975164e-08, -1.23606244e-13)
+end)
+ss:Button("Meadow Zone",function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-40.9999695, 5.99999809, 10.0000114, -3.1015714e-14, -1.47945378e-09, 1, -1.4064172e-09, 1, 1.47945378e-09, -1, -1.4064172e-09, -3.10177943e-14)
+end)
+ss:Button("Mountain falls Zone",function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-409.999908, 5.99999809, 10.0000114, -2.29353185e-13, 1.35053924e-09, 1, 1.28407418e-09, 1, -1.35053924e-09, -1, 1.28407418e-09, -2.29354919e-13)
+end)
+ss:Button("Snow Town Zone",function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-769.999878, 5.99999809, 10.0000114, -2.69345313e-14, -9.63568159e-09, 1, -9.50406331e-09, 1, 9.63568159e-09, -1, -9.50406331e-09, -2.70261091e-14)
+end)
+ss:Button("Bone Desert Zone",function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1121.99976, 5.99999809, 10.0000114, -2.7409627e-14, 4.01641458e-08, 1, 7.3171357e-08, 1, -4.01641458e-08, -1, 7.3171357e-08, -3.03484925e-14)
+end)
+ss:Button("lava land zone",function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1479.99976, 5.99999809, 10.0000114, -3.01628195e-14, 3.33907337e-08, 1, 6.08370812e-08, 1, -3.33907337e-08, -1, 6.08370812e-08, -3.21942146e-14)
+end)
+ss:Button("mystical valley Zone",function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1852.99976, 5.99999809, 10.0000114, -6.54403696e-14, -3.87386017e-08, 1, -7.33935295e-08, 1, 3.87386017e-08, -1, -7.33935295e-08, -6.82835339e-14)
+end)
+ss:Button("sea town zone",function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2564.83496, 7.99999809, 9.47143841, -0.00696245767, 5.42168443e-08, 0.999975741, 1.26668409e-09, 1, -5.42093375e-08, -0.999975741, 8.89223195e-10, -0.00696245767)
+end)
+ss:Button("tiki land zone",function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-179.500366, 14.9999971, 1597.50037, 4.8523663e-15, -1.28869813e-08, 1, 1.14472705e-07, 1, 1.28869813e-08, -1, 1.14472705e-07, 6.32757371e-15)
+end)
+ss:Button("tropical island zone",function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-623.500366, 13.9999971, 1597.50037, 9.17719117e-15, 1.09105676e-08, 1, -9.69195142e-08, 1, -1.09105676e-08, -1, -9.69195142e-08, 1.02346381e-14)
+end)
+ss:Button("splash zone",function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-888.500366, 14.9999971, 1597.50037, 2.59052864e-14, 2.26554198e-09, 1, -2.0125464e-08, 1, -2.26554198e-09, -1, -2.0125464e-08, 2.59508804e-14)
+end)
