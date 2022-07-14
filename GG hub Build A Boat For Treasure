@@ -1,0 +1,112 @@
+local SimpleUi = loadstring(game:HttpGet("https://raw.githubusercontent.com/naypramx/Ui__Project/Script/Asss"))()
+local Ui = SimpleUi:Win('GG Hub  Script Build A Boat For Treasure')
+local Chanel = Ui:Channel('main')
+
+local Page = Chanel:Addpage('farm')
+
+Page:Button("reset (q)",function()
+  local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+local char = player.Character
+local h = char:WaitForChild("Humanoid")
+mouse.KeyUp:connect(function(key)
+ if key == "q" then
+  h.Health = 0
+ end
+end)
+end)
+Page:Button("inf jump",function()
+local InfiniteJumpEnabled = true
+game:GetService("UserInputService").JumpRequest:connect(function()
+	if InfiniteJumpEnabled then
+		game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+	end
+end)
+end)
+Page:Toggle("farm",false,function(t)
+_G.autoTap = true;
+while _G.autoTap == true do
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-78.61846160888672, 67.45364379882812, 438.59161376953125)
+local TweenService = game:GetService("TweenService")
+
+local Tw = TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(18, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0),
+{CFrame = CFrame.new(-39.4350243, 92.2804031, 8734.13965, -1, -1.97924055e-05, 0.000118926655, 7.07153314e-09, 0.986422896, 0.164225191, -0.000120562385, 0.164225191, -0.986422896)}):Play() wait(18)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-56.52830123901367, -360.40423583984375, 9488.42578125)wait(12)
+    wait()
+end
+end)
+Page:Toggle("unfarm",false,function(t)
+_G.autoTap = false;
+while _G.autoTap == true do
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-78.61846160888672, 67.45364379882812, 438.59161376953125)
+local TweenService = game:GetService("TweenService")
+
+local Tw = TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(18, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0),
+{CFrame = CFrame.new(-39.4350243, 92.2804031, 8734.13965, -1, -1.97924055e-05, 0.000118926655, 7.07153314e-09, 0.986422896, 0.164225191, -0.000120562385, 0.164225191, -0.986422896)}):Play() wait(18)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-56.52830123901367, -360.40423583984375, 9488.42578125)wait(12)
+    wait()
+end
+end)
+Page:slider("Speed",1,1000,2,function(t)
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (t)
+end)
+Page:Label('credit Teaspoon#0089')
+local Page = Chanel:Addpage('teleport')
+Page:Button("green team",function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-462.812714, -9.89999676, 292.47583, -0.0176131763, 4.95365882e-08, -0.999844849, -2.84765136e-08, 1, 5.00459123e-08, 0.999844849, 2.93535631e-08, -0.0176131763)
+end)
+Page:Button("yellow team",function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-483.832306, -9.70000553, 639.849182, -0.0562401116, -1.35345877e-08, -0.998417258, 3.27626424e-08, 1, -1.54015396e-08, 0.998417258, -3.35769705e-08, -0.0562401116)
+end)
+Page:Button("black team",function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-482.43042, -9.70000553, -70.3406448, -0.0176070929, -2.60735256e-09, -0.999844968, -9.28729449e-09, 1, -2.44420906e-09, 0.999844968, 9.24281895e-09, -0.0176070929)
+end)
+Page:Button("red team",function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(375.503723, -9.70000362, -65.8554916, -0.0376763158, -4.41671553e-08, 0.999289989, 1.01350999e-07, 1, 4.80197819e-08, -0.999289989, 1.03088247e-07, -0.0376763158)
+end)
+Page:Button("blue team",function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(373.8414, -9.70000362, 298.773285, 0.00754908519, 6.69121079e-08, 0.999971509, -2.9525451e-09, 1, -6.68917295e-08, -0.999971509, -2.44748954e-09, 0.00754908519)
+end)
+Page:Button("pink team",function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(375.806183, -9.70000362, 647.880737, 0.0175963603, -6.90727546e-08, 0.999845147, 2.81403256e-08, 1, 6.85882071e-08, -0.999845147, 2.69290652e-08, 0.0175963603)
+end)
+Page:Button("white team",function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-50.4168701, -9.70000362, -498.67749, -0.999684453, -1.0362492e-07, -0.025119761, -1.04244208e-07, 1, 2.33438353e-08, 0.025119761, 2.59550585e-08, -0.999684453)
+end)
+local Chanel = Ui:Channel('Players')
+local Page = Chanel:Addpage('teleport Players')
+Page:Button("teleport Players",function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/tatsafasg/tatsafasg/main/GG%20hub%20tp"))()
+end)
+Page:Button("esp",function()
+
+while wait() do
+     pcall(function()
+       for i,v in pairs(game.Players:GetChildren()) do
+            if not v.Character.Head:FindFirstChild("ESP") then
+                local BillboardGui = Instance.new("BillboardGui")
+                local TextLabel = Instance.new("TextLabel")
+                BillboardGui.Parent = v.Character.Head
+                BillboardGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+                BillboardGui.Active = true
+                BillboardGui.Name = "ESP"
+                BillboardGui.AlwaysOnTop = true
+                BillboardGui.LightInfluence = 1.000
+                BillboardGui.Size = UDim2.new(0, 200, 0, 50)
+                BillboardGui.StudsOffset = Vector3.new(0, 2.5, 0)
+                TextLabel.Parent = BillboardGui
+                TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                TextLabel.BackgroundTransparency = 1.000
+                TextLabel.Size = UDim2.new(0, 200, 0, 50)
+                TextLabel.Font = Enum.Font.GothamBold
+                TextLabel.Text = v.Name
+                TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+                TextLabel.TextScaled = true
+                TextLabel.TextSize = 14.000
+                TextLabel.TextStrokeTransparency = 0.000
+                TextLabel.TextWrapped = true
+            end
+        end
+    end) 
+end
+end)
